@@ -1,0 +1,28 @@
+<form>
+    <div class="row">
+        <div class="col">
+            <input name="firstname" [(ngModel)]="selectedStudent.studentFirstName" type="text" class="form-control" placeholder="First name">
+        </div>
+        <div class="col">
+            <input name="lastname" [(ngModel)]="selectedStudent.studentLastName" type="text" class="form-control" placeholder="Last name">
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="row">
+        <div class="col">
+            <select name="classes" [(ngModel)]="selectedStudent.studentClass" class="form-control" id="exampleFormControlSelect1">
+                <option  [ngValue]="selectedStudent.studentClass">{{selectedStudent.studentClass}}</option>
+                <option *ngFor="let class of classes" [ngValue]="class.classLibelle">{{ class.classLibelle }}</option>
+            </select>
+        </div>
+        <div class="col">
+            <select name="studentStatus" [(ngModel)]="selectedStudent.studentStatus" class="form-control" id="exampleFormControlSelect1">
+                <option>Status</option>
+                <option>Suspended</option>
+                <option>Enrolled</option>
+              </select>
+        </div>
+    </div>
+    <div class="line"></div>
+    <button type="button" (click)="updateSelectedStudent()" class="btn btn-success">Register</button>
+</form>

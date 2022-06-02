@@ -25,3 +25,15 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Project Structure
+create a component for:
+    classes 
+    students
+
+a router file for every component  
+a service file for every component
+
+CRUD for classes and students  
+
+all the data are store in the localStorage
