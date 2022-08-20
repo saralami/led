@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+
+
 import { ListClasseComponent } from './list-classe/list-classe.component';
 import { AddClasseComponent } from './add-classe/add-classe.component';
 import { UpdateClasseComponent } from './update-classe/update-classe.component';

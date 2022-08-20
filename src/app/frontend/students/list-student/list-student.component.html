@@ -13,15 +13,16 @@
         </thead>
         <tbody>
             <tr *ngFor="let student of students">
-                <td>{{student.studentFirstName}}</td>
-                <td>{{student.studentLastName}}</td>
-                <td>{{student.studentClass}}</td>
-                <td>{{student.studentStatus}}</td>
+                <td>{{student.firstname}}</td>
+                <td>{{student.lastname}}</td>
+                <td>{{student.classe}}</td>
+                <td>{{student.status}}</td>
                 <td>
-                    <button routerLink="/students/{{student.id}}" class="btn btn-success float-left">
+                  <!-- routerLink="/students/{{student._id}}" -->
+                    <button routerLink="/students/{{student._id}}" class="btn btn-success float-left">
                         <i class="bi bi-pencil-square"></i>
                     </button>
-                    <button (click)="deleteStudent(student.id)" class="btn btn-danger float-right">
+                    <button (click)="deleteStudent(student._id)" class="btn btn-danger float-right">
                         <i class="bi bi-trash"></i>
                         </button>
                 </td>

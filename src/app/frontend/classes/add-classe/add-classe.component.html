@@ -1,17 +1,16 @@
 <form>
     <div class="row">
         <div class="col">
-            <input name="classLibelle" [(ngModel)]="newClass.classLibelle" type="text" class="form-control" placeholder="Class Name">
+            <input name="libelle" [(ngModel)]="newClass.libelle" type="text" class="form-control" placeholder="Class Name">
         </div>
         <div class="col">
-            <input name="classDescription" [(ngModel)]="newClass.classDescription" type="text" class="form-control" placeholder="Class Description">
+            <input name="description" [(ngModel)]="newClass.description" type="text" class="form-control" placeholder="Class Description">
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col">
-            <select name="classStatus" [(ngModel)]="newClass.classStatus" class="form-control" id="exampleFormControlSelect1">
-              <option>Class Status</option>
+            <select name="status" [(ngModel)]="newClass.status" class="form-control" id="exampleFormControlSelect1">
               <option>close</option>
               <option>open</option>
             </select>

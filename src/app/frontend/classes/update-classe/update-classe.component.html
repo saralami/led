@@ -1,24 +1,25 @@
 <form>
     <div class="row">
         <div class="col">
-            <input name="classLibelle" [(ngModel)]="selectedClasse.classLibelle" type="text" class="form-control" placeholder="Class Name">
+            <input name="libelle" [(ngModel)]="selectedClasse.libelle" type="text" class="form-control" placeholder="Class Name">
         </div>
         <div class="col">
-            <input name="classDescription" [(ngModel)]="selectedClasse.classDescription" type="text" class="form-control" placeholder="Class Description">
+            <input name="description" [(ngModel)]="selectedClasse.description" type="text" class="form-control" placeholder="Class Description">
         </div>
     </div>
     <br>
     <div class="row">
         <div class="col">
-            <select name="classStatus" [(ngModel)]="selectedClasse.classStatus" class="form-control" id="exampleFormControlSelect1">
+            <select name="status" [(ngModel)]="selectedClasse.status" class="form-control" id="exampleFormControlSelect1">
               <option>Class Status</option>
-              <option>close</option>
-              <option>open</option>
+              <option [value]="'close'">close</option>
+              <option [value]="'open'">open</option>
+              <option [value]="'active'">active</option>
             </select>
         </div>
     </div>
     <div class="line"></div>
     <div>
-        <button (click)="updateClass()" type="submit" class="btn btn-success">Submit</button>
+        <button (click)="updateClass()" type="submit" class="btn btn-success">Update</button>
     </div>
 </form>

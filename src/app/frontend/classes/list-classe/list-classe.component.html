@@ -7,28 +7,21 @@
                 <th scope="col">Class Name</th>
                 <th scope="col">Description</th>
                 <th scope="col">Status</th>
+
                 <!-- <th scope="col">List of Students</th> -->
                 <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let classe of listClasses">
-                <td>{{classe.classLibelle}}</td>
-                <td>{{classe.classDescription}}</td>
-                <td>{{classe.classStatus}}</td>
-                <!-- <td>
-                    <button class="float-left btn btn-success">
-                        <i class="bi bi-eye"></i>
-                     </button>
-                    <button class="float-right btn btn-primary">
-                        <i class="bi bi-plus"></i>
-                     </button>
-                </td> -->
+                <td>{{classe.libelle}}</td>
+                <td>{{classe.description}}</td>
+                <td>{{classe.status}}</td>
                 <td>
-                    <button routerLink="/classes/{{classe.id}}" class="btn btn-success float-left">
+                    <button routerLink="/classes/{{classe._id}}" class="btn btn-success float-left">
                         <i class="bi bi-pencil-square"></i>
                     </button>
-                    <button (click)="deleteClasse(classe.id)" class="btn btn-danger float-right">
+                    <button (click)="deleteClasse(classe._id)" class="btn btn-danger float-right">
                         <i class="bi bi-trash"></i>
                     </button>
                 </td>

@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ClassService } from '../class.service';
 import { Iclass } from '../Iclass';
 
 @Component({
@@ -7,36 +9,19 @@ import { Iclass } from '../Iclass';
   styleUrls: ['./add-classe.component.scss']
 })
 export class AddClasseComponent implements OnInit {
-listClasses: Iclass[] = []; 
+
+constructor( public http: HttpClient, public classService: ClassService) {}
+
 newClass: Iclass = {
-  id: 0,
-  classLibelle: "",
-  classDescription: "",
-  classStatus: "",
-};
-  constructor() { }
+    libelle: '',
+    description: '',
+    status: ''
+  };
 
-  ngOnInit(): void {}
+ngOnInit(): void {}
 
- 
-  getLastClassIndex(){
-    if(this.listClasses.length === 0) {
-      return 0;
-    }
-    const lastIndex = this.listClasses[ this.listClasses.length - 1].id;
-    return lastIndex;
+async addClass(){
+     await this.classService.addClass(this.newClass);
   }
-
-  setLastClassIndex() {
-    const index = this.getLastClassIndex() + 1;
-    this.newClass.id = index;
-  }
-
-  addClass(){
-
-    this.setLastClassIndex();
-     this.listClasses.push({...this.newClass});
-    localStorage.setItem('Classes', JSON.stringify(this.listClasses)); 
-   }
 
 }

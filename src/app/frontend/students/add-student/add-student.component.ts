@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Iclass } from '../../classes/Iclass';
 import { Istudent } from '../Istudent'
 import { ClassService } from '../../classes/class.service';
+import { StudentService } from '../student.service';
 
 @Component({
   selector: 'app-add-student',
@@ -11,39 +12,28 @@ import { ClassService } from '../../classes/class.service';
 })
 export class AddStudentComponent implements OnInit {
   classes:Iclass[] = [];
-  students:Istudent[] = [];
+
   newStudent:Istudent = {
-    id: 0,
-    studentFirstName: '',
-    studentLastName: '',
-    studentClass: '',
-    studentStatus: ''
+    firstname: '',
+    lastname: '',
+    classe: '',
+    status: ''
   };
-  constructor( private ClassService: ClassService ) { }
 
-  ngOnInit(): void {
-    this.classes = this.ClassService.getListClasses();
-    //console.log(this.classes);
-  }
 
-  getLastStudentIndex() {
-    if(this.students.length === 0) {
-      return 0;
-    }
-    const lastIndex = this.students[this.students.length - 1 ].id;
-    return lastIndex;
-  }
+  constructor(
+    private classService: ClassService,
+    private studentService: StudentService
+    ) {}
 
-  setLastStudentIndex() {
-    const index = this.getLastStudentIndex() + 1;
-    this.newStudent.id = index;
-  }
+ async ngOnInit() {
+    this.classes =  await this.classService.getListClasses();
+}
 
-  addNewStudent() {
-   this.setLastStudentIndex();
-   this.students.push({...this.newStudent});
-   localStorage.setItem("Students", JSON.stringify(this.students));
-    console.log(this.newStudent);
+
+  async addNewStudent() {
+      await this.studentService.addStudent(this.newStudent);
+        console.log(this.newStudent);
   }
 
 }

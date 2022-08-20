@@ -1,22 +1,22 @@
 <form>
     <div class="row">
         <div class="col">
-            <input name="firstname" [(ngModel)]="newStudent.studentFirstName" type="text" class="form-control" placeholder="First name">
+            <input name="firstname" [(ngModel)]="newStudent.firstname" type="text" class="form-control" placeholder="First name">
         </div>
         <div class="col">
-            <input name="lastname" [(ngModel)]="newStudent.studentLastName" type="text" class="form-control" placeholder="Last name">
+            <input name="lastname" [(ngModel)]="newStudent.lastname" type="text" class="form-control" placeholder="Last name">
         </div>
     </div>
     <div class="line"></div>
     <div class="row">
         <div class="col">
-            <select name="classes" [(ngModel)]="newStudent.studentClass" class="form-control" id="exampleFormControlSelect1">
+            <select name="classe" [(ngModel)]="newStudent.classe" class="form-control" id="exampleFormControlSelect1">
                 <option>Choose Classes</option>
-                <option *ngFor="let class of classes" [ngValue]="class.classLibelle">{{ class.classLibelle }}</option>
+                <option *ngFor="let class of classes" [ngValue]="class.libelle">{{ class.libelle }}</option>
             </select>
         </div>
         <div class="col">
-            <select name="studentStatus" [(ngModel)]="newStudent.studentStatus" class="form-control" id="exampleFormControlSelect1">
+            <select name="status" [(ngModel)]="newStudent.status" class="form-control" id="exampleFormControlSelect1">
                 <option>Status</option>
                 <option>Suspended</option>
                 <option>Enrolled</option>

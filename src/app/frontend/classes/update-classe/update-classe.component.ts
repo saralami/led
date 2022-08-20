@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ClassService } from '../class.service';
@@ -10,49 +10,54 @@ import { Iclass } from '../Iclass';
   styleUrls: ['./update-classe.component.scss']
 })
 export class UpdateClasseComponent implements OnInit {
-selectedClassId: number = 0;
+selectedClassId: string = '';
 listClasses: Iclass[] = [];
  selectedClasse: Iclass = {
-   id: 0,
-   classLibelle: '',
-   classDescription: '',
-   classStatus: ''
+ //  _id: '',
+   libelle: '',
+   description: '',
+   status: ''
  }
   constructor(
     private route: ActivatedRoute,
-    private allClasses: ClassService
+    private allClasses: ClassService,
+    public classService: ClassService,
+    private changeDetector: ChangeDetectorRef
     ) { }
 
-  ngOnInit(): void {
-    this.selectedClassId = this.route.snapshot.params["id"];
-   this.listClasses = this.allClasses.getListClasses();
-   this.getSelectedClass();
-   // console.log( this.listClasses)
+ async ngOnInit() {
+  this.selectedClassId = this.route.snapshot.params["id"];
+//console.log('selected from link', this.selectedClassId );
+      this.listClasses = await this.allClasses.getListClasses()
+      this.getSelectedClass();
+      this.changeDetector.detectChanges();
+
+
   }
 
   getSelectedClass() {
-this.listClasses.forEach(classe => {
-    if(classe.id == this.selectedClassId) {
-      this.selectedClasse.id = classe.id,
-      this.selectedClasse.classLibelle = classe.classLibelle,
-      this.selectedClasse.classDescription = classe.classDescription,
-      this.selectedClasse.classStatus = classe.classStatus
+this.listClasses?.forEach(classe => {
+
+    if(classe._id == this.selectedClassId) {
+     // this.selectedClasse._id =  classe._id,
+      this.selectedClasse.libelle = classe.libelle,
+      this.selectedClasse.description = classe.description,
+      this.selectedClasse.status = classe.status
+
     }
 });
-    // console.log(this.selectedClasse);
+
   }
 
-  updateClass() {
-    this.listClasses.forEach(classe => {
-      if(classe.id == this.selectedClassId) {
-        classe.id = this.selectedClasse.id,
-        classe.classLibelle = this.selectedClasse.classLibelle,
-        classe.classDescription = this.selectedClasse.classDescription,
-        classe.classStatus = this.selectedClasse.classStatus 
-      }
-  });
-   
-    localStorage.setItem('Classes', JSON.stringify(this.listClasses))
+  async updateClass() {
+
+     await this.classService.updateClass(this.selectedClassId,this.selectedClasse);
+    // console.log('updated',this.selectedClassId);
+     //this.selectedClassId = '';
   }
+
+
+
+
 
 }

@@ -1,6 +1,11 @@
 export interface Iclass {
-    id: number;
-    classLibelle: string;
-    classDescription: string;
-    classStatus: string;
+    _id?: string ;
+    libelle: string;
+    description: string;
+    status: string;
 }
+
+
+
+
+
